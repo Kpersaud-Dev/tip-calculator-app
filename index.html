@@ -6,6 +6,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
   
   <title>Tip calculator app</title>
 
@@ -14,50 +15,56 @@
 </head>
 <body>
   <header>
-    <h1>Splitter</h1>
+    <h1>Spli<br />tter</h1>
   </header>
 
   <form class="card">
     <!-- Enter Bill Amount -->
     <div class="input bill">
-      <label class="label">
-        Bill
-      </label>
-      <input type="number" class="bill-amount" placeholder="$0.00">
+      <label class="label">Bill</label>
+      <input type="number" class="input-bar bill-amount" placeholder="$0.00">
     </div>
     <!-- Select Tip Section -->
     <div class="tip">
       <label class="label">Select Tip %</label>
       <div class="buttons">
-        <button>5%</button>
-        <button>10%</button>
-        <button>15%</button>
-        <button>25%</button>
-        <button>50%</button>
-        <button>Custom</button>
+        <button class="tip-percent" value="0.05" type="button">5%</button>
+        <button class="tip-percent" value="0.10" type="button">10%</button>
+        <button class="tip-percent" value="0.15" type="button">15%</button>
+        <button class="tip-percent" value="0.25" type="button">25%</button>
+        <button class="tip-percent" value="0.50" type="button">50%</button>
+        <input type ="number" class="tip-percent" id="custom" placeholder="Custom">
       </div>
     </div>
     <!-- Enter Number of People -->
     <div class="input people">
       <label class="label">Number of People</label>
-      <input type="number" class="number-of-people" placeholder="$0.00">
+      <input type="number" class="input-bar number-of-people" placeholder="0">
     </div>
     <!-- Totals -->
     <div class="totals">
       <div class="tip-total">
         <!-- Tip amount displayed -->
         <div class="tip-text">
-          <h2 class="tip-amount">Tip Amount</h2>
-          <span class="per-person">/ person</span>
-          <span class="number-total">$4.27</span>
+          <div class="tip-left">
+            <h2 class="tip-amount">Tip Amount</h2>
+            <span class="per-person per-person-amount">/ person</span>
+          </div>
+          <div class="tip-right">
+            <span class="number-total">$4.27</span>
+          </div>
         </div>
         <!-- Total Per Person Displayed -->
         <div class="tip-text">
-          <h2 class="tip-amount">Total</h2>
-          <span class="per-person">/ person</span>
-          <span class="number-total">$32.79</span>
+          <div class="tip-left">
+            <h2 class="tip-amount">Total</h2>
+            <span class="per-person">/ person</span>
+          </div>
+          <div class="tip-right">
+            <span class="number-total total-amount">$32.29</span>
+          </div>
         </div>
-        <button id="reset">Reset</button>
+        <button id="reset" type="reset">Reset</button>
       </div>
     </div>
   </form>
