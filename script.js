@@ -8,9 +8,11 @@ const billAmount = document.querySelector('.bill-amount'),
       resetButton = document.getElementById('reset'),
       numberTotal = document.querySelector('.number-total');
 
-const billAmountValue = billAmount.value,
-      tipPercentValue = tipPercent.value,
-      numberOfPeopleValue = numberOfPeople.value;    
+let billAmountValue = billAmount.valueAsNumber,
+    tipPercentValue = tipPercent.forEach(tip => tip.valueAsNumber),
+    numberOfPeopleValue = numberOfPeople.valueAsNumber;  
+        
+
 
 // Display Totals Function
 const displayTotals = (tipAmount, total) => {
@@ -33,9 +35,24 @@ const calculateTip = (total, tipPercent, numberOfPeople) => {
   displayTotals(perPerson, totalPerPerson);
 }
 
-// calculateTip(billAmountValue, 0.15, numberOfPeopleValue);
+const updateTotals = () => {
+  calculateTip(billAmountValue, 0.15, numberOfPeopleValue);
+}
 
-billAmount.addEventListener('change', calculateTip);
 
-numberOfPeople.addEventListener('change', calculateTip);
+
+billAmount.addEventListener('change', e => {
+  numberTotal.innerText = e.target.valueAsNumber / tipPercentvalue;
+  totalAmount.innerText = e.target.valueAsNumber / numberOfPeopleValue;
+});
+
+tipPercent.forEach(tip => tip.addEventListener('click', e => {
+  console.log(e.target.value);
+}));
+
+numberOfPeople.addEventListener('change', e => {
+  numberTotal.innerText = e.target.valueAsNumber / tipPercentvalue;
+
+  totalAmount.innerText = e.target.valueAsNumber / numberOfPeopleValue;
+});
 
