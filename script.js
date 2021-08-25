@@ -1,58 +1,38 @@
-// Global variables
-const billAmount = document.querySelector('.bill-amount'),
+// Global Variables
+const billAmount = document.getElementById('bill-amount'),
       tipPercent = document.querySelectorAll('.tip-percent'),
-      customTip = document.getElementById('custom'),
+      customTip = document.querySelector('#custom'),
       numberOfPeople = document.querySelector('.number-of-people'),
-      amountPerPerson = document.querySelector('.per-person-amount'),
+      tipAmount = document.querySelector('.number-total'),
       totalAmount = document.querySelector('.total-amount'),
-      resetButton = document.getElementById('reset'),
-      numberTotal = document.querySelector('.number-total');
+      submitButton = document.querySelector('#reset'),
+      form = document.querySelector('.card');
 
-let billAmountValue = billAmount.valueAsNumber,
-    tipPercentValue = tipPercent.forEach(tip => tip.valueAsNumber),
-    numberOfPeopleValue = numberOfPeople.valueAsNumber;  
-        
+//Capture Tip Percent Button Values
+let tipPercentButton = tipPercent.forEach(tip => tip.addEventListener('click', e => e.target.value));
 
-
-// Display Totals Function
-const displayTotals = (tipAmount, total) => {
-  // Display tip amount
-  numberTotal.innerText = tipAmount;
-  // Display Total per person
-  totalAmount.innerText = total;
+// Calculate Tip function
+const calculateTip = (bill, tipPercent, numPeople) => {
+  const tip = bill * tipPercent;
+  const totalPerPerson = (tip + bill) / numPeople;
+  return totalPerPerson;
 }
 
+// Form Event Listener
+form.addEventListener('submit', e => {
+  e.preventDefault();
 
-// Calculate Tip Function
-const calculateTip = (total, tipPercent, numberOfPeople) => {
-  // Extra Tip Amount
-  const tip = total * tipPercent;
-  // Tip Amount Per Person
-  const perPerson = tip / numberOfPeople;
-  // Return Total + Tip Per Person
-  const totalPerPerson = (total + perPerson) / numberOfPeople;
+  // Values load upon form submit (Otherwise load upon DOM initiation)
+  let billAmountValue = billAmount.valueAsNumber,
 
-  displayTotals(perPerson, totalPerPerson);
-}
+      numberOfPeopleValue = numberOfPeople.valueAsNumber;
 
-const updateTotals = () => {
-  calculateTip(billAmountValue, 0.15, numberOfPeopleValue);
-}
+
+  console.log(calculateTip(billAmountValue, tipPercentButton, numberOfPeopleValue));
+
+})
 
 
 
-billAmount.addEventListener('change', e => {
-  numberTotal.innerText = e.target.valueAsNumber / tipPercentvalue;
-  totalAmount.innerText = e.target.valueAsNumber / numberOfPeopleValue;
-});
 
-tipPercent.forEach(tip => tip.addEventListener('click', e => {
-  console.log(e.target.value);
-}));
-
-numberOfPeople.addEventListener('change', e => {
-  numberTotal.innerText = e.target.valueAsNumber / tipPercentvalue;
-
-  totalAmount.innerText = e.target.valueAsNumber / numberOfPeopleValue;
-});
 
