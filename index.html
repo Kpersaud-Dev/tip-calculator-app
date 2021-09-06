@@ -24,46 +24,54 @@
     </header>
 
     <form class="card">
-      <!-- Enter Bill Amount -->
-      <div class="input bill">
-        <label class="label">Bill</label>
-        <input
-          type="number"
-          class="input-bar bill-amount"
-          id="bill-amount"
-          placeholder="$0.00"
-          min="1"
-        />
-      </div>
-      <!-- Select Tip Section -->
-      <div class="tip">
-        <label class="label">Select Tip %</label>
-        <div class="buttons">
-          <button class="tip-percent" value="0.05" type="button">5%</button>
-          <button class="tip-percent" value="0.10" type="button">10%</button>
-          <button class="tip-percent" value="0.15" type="button">15%</button>
-          <button class="tip-percent" value="0.25" type="button">25%</button>
-          <button class="tip-percent" value="0.50" type="button">50%</button>
+      <div class="left-container">
+        <!-- Enter Bill Amount -->
+        <div class="input bill">
+          <label class="label">Bill</label>
           <input
             type="number"
-            class="tip-percent"
-            id="custom"
-            placeholder="Custom"
+            class="input-bar bill-amount"
+            id="bill-amount"
+            placeholder="$0.00"
+            min="1"
+          />
+        </div>
+        <!-- Select Tip Section -->
+        <div class="tip">
+          <label class="label">Select Tip %</label>
+          <div class="buttons">
+            <button type="number" class="tip-percent" id="five" value="0.05">
+              5%
+            </button>
+            <button type="number" class="tip-percent" value="0.10" id="ten">
+              10%
+            </button>
+            <button type="number" class="tip-percent" value="0.15" id="fifteen">
+              15%
+            </button>
+            <button type="number" class="tip-percent" value="0.20" id="twenty">
+              20%
+            </button>
+            <button type="number" class="tip-percent" id="fifty" value="0.50">
+              50%
+            </button>
+
+            <input type="number" id="custom" placeholder="Custom" />
+          </div>
+        </div>
+        <!-- Enter Number of People -->
+        <div class="input people">
+          <label class="label">Number of People</label>
+          <input
+            type="number"
+            class="input-bar number-of-people"
+            placeholder="0"
           />
         </div>
       </div>
-      <!-- Enter Number of People -->
-      <div class="input people">
-        <label class="label">Number of People</label>
-        <input
-          type="number"
-          class="input-bar number-of-people"
-          placeholder="0"
-        />
-      </div>
       <!-- Totals -->
       <div class="totals">
-        <div class="tip-total">
+        <div class="tip-totals">
           <!-- Tip amount displayed -->
           <div class="tip-text">
             <div class="tip-left">
@@ -84,8 +92,8 @@
               <span class="number-total total-amount">$32.29</span>
             </div>
           </div>
-          <button id="reset" type="submit">Submit</button>
         </div>
+        <button id="reset" type="reset">Reset</button>
       </div>
     </form>
   </body>

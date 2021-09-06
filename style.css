@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -11,7 +11,7 @@ body {
   flex-flow: column wrap;
   align-items: center;
   background-color: hsl(185, 41%, 84%);
-  font-family: 'Space Mono', monospace;
+  font-family: "Space Mono", monospace;
 }
 
 header {
@@ -39,12 +39,13 @@ h2 {
 
 label {
   color: hsl(183, 100%, 15%);
-  padding-bottom: .5em;
+  padding-bottom: 0.5em;
 }
 
 /* Bill Amount Input Section */
 
-input {}
+input {
+}
 
 .input {
   display: flex;
@@ -59,7 +60,7 @@ input {}
   padding: 1em;
   border: none;
   text-align: right;
-  font-family: 'Space Mono', monospace;
+  font-family: "Space Mono", monospace;
   font-size: 1.25em;
   color: hsl(183, 100%, 15%);
 }
@@ -74,7 +75,7 @@ input {}
 
 .tip {
   width: 100%;
-  margin: .5em 0;
+  margin: 0.5em 0;
 }
 
 .buttons {
@@ -84,23 +85,34 @@ input {}
 }
 
 .tip-percent {
-  padding: .5em .5em;
-  margin: .65em;
+  padding: 0.5em 0.5em;
+  margin: 0.65em;
   width: 75%;
   background-color: hsl(183, 100%, 15%);
   color: white;
   border: none;
   border-radius: 5%;
-  font-family: 'Space Mono', monospace;
+  font-family: "Space Mono", monospace;
+}
+
+.tip-percent:hover {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+  cursor: pointer;
 }
 
 #custom {
   background-color: hsl(189, 41%, 97%);
   color: hsl(184, 14%, 56%);
+  border: none;
   text-align: right;
+  width: 75%;
+  font-family: "Space Mono", monospace;
+  padding: 0.5em;
+  margin: 0.65em;
 }
 
-.tip-percent:hover {
+.clicked {
   background-color: hsl(172, 67%, 45%);
   color: hsl(183, 100%, 15%);
 }
@@ -128,14 +140,14 @@ input {}
 }
 
 .per-person {
-  font-size: .75em;
+  font-size: 0.75em;
   color: hsl(184, 14%, 56%);
 }
 
 .tip-text {
   display: flex;
   justify-content: space-between;
-  padding-bottom: .75em;
+  padding-bottom: 0.75em;
 }
 
 .number-total {
@@ -146,7 +158,7 @@ input {}
 #reset {
   background-color: hsl(172, 67%, 45%);
   width: 100%;
-  padding: .5em 0;
+  padding: 0.5em 0;
   border: none;
   border-radius: 5%;
   color: hsl(183, 100%, 15%);
@@ -156,6 +168,51 @@ input {}
 }
 
 #reset:hover {
-  background-color: hsl(172, 67%, 45%);
-  color: hsl(183, 100%, 15%);
+  background-color: hsl(183, 100%, 15%);
+  color: hsl(172, 67%, 45%);
+}
+
+/* Tablet Styles */
+
+@media only screen and (min-width: 768px) {
+  /* Tip Buttons Section */
+
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Totals Section */
+  .totals {
+    height: 90%;
+    width: 50%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .tip-text {
+    display: flex;
+    justify-content: space-around;
+  }
+  .number-total {
+    font-size: 2.5em;
+  }
+
+  .tip-totals {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: space-between;
+  }
+
+  #reset {
+    width: 70%;
+  }
+
+  #reset:hover {
+    cursor: pointer;
+  }
 }
