@@ -3,7 +3,7 @@ const billAmount = document.getElementById('bill-amount'),
       tipPercent = document.querySelectorAll('.tip-percent'),
       customTip = document.querySelector('#custom'),
       numberOfPeople = document.querySelector('.number-of-people'),
-      tipAmount = document.querySelector('.number-total'),
+      tipAmount = document.querySelector('.tip-display'),
       totalAmount = document.querySelector('.total-amount'),
       resetButton = document.querySelector('#reset'),
       form = document.querySelector('.card'),
@@ -14,36 +14,43 @@ const billAmount = document.getElementById('bill-amount'),
       fiftyButton = document.querySelector('#fifty');
 
 
-
-
+// Update Totals Display
 const updateTotals = (tip, total) => {
-  tipAmount.innerText = tip;
-  totalAmount.innerText = total;
 
-  if(tip == NaN) {
-    tipAmount.innerText = "0";
-  } else if(total == NaN) {
-    totalAmount.innerText = "0";
+  console.log(tip, total);
+
+  // If values are Not a number, display 0
+  if(isNaN(tip)) {
+    tipAmount.innerText = "$0.00";
+  } else if(isNaN(total)) {
+    totalAmount.innerText = "$0.00";
+  } else {
+    tipAmount.innerText = tip;
+    totalAmount.innerText = total;
   }
+  
 };
 
+
+// Calculate Tip
 const calculateTip = (bill, tip, numPeople) => {
   const tipTotal = Math.floor((bill * tip) / numPeople);
   const totalPerPerson = Math.floor((bill + tipTotal) / numPeople);
 
+  // Update Display
   updateTotals(tipTotal, totalPerPerson);
 };
 
-billAmount.addEventListener('change', function(e) {
+
+// Bill Amount Event Listener
+// Values must be reinitiated every event listener
+
+billAmount.addEventListener('change', function() {
   let billAmountValue = parseFloat(billAmount.value),
     tipPercentValue = parseFloat(tipPercent.value),
     customTipValue = parseFloat(customTip.value),
     numberOfPeopleValue = parseFloat(numberOfPeople.value);
 
-
-  console.log(billAmountValue);
-  console.log(tipPercentValue);
-  console.log(numberOfPeopleValue);
   calculateTip(billAmountValue, tipPercentValue, numberOfPeopleValue);
 });
 
@@ -52,7 +59,8 @@ billAmount.addEventListener('change', function(e) {
 tipPercent.forEach(tip => tip.addEventListener('click', e => {
   e.preventDefault();
 
-  e.target.classList.add('clicked');
+  // Add highlight on clicked button
+  // e.target.classList.add('clicked');
 
   let tipPercentValue = e.target.value,
       billAmountValue = parseFloat(billAmount.value),
@@ -60,15 +68,11 @@ tipPercent.forEach(tip => tip.addEventListener('click', e => {
       customTipValue = parseFloat(customTip.value),
       numberOfPeopleValue = parseFloat(numberOfPeople.value);
 
-  
-  console.log(billAmountValue);
-  console.log(tipPercentValue);
-  console.log(numberOfPeopleValue);
-
   calculateTip(billAmountValue, tipPercentValue, numberOfPeopleValue);
   })
 );
 
+// Number of People Event Listener
 
 numberOfPeople.addEventListener('change', function(e) {
   let billAmountValue = parseFloat(billAmount.value),
@@ -76,9 +80,6 @@ numberOfPeople.addEventListener('change', function(e) {
     customTipValue = parseFloat(customTip.value),
     numberOfPeopleValue = e.target.value;
 
-    console.log(billAmountValue);
-  console.log(tipPercentValue);
-  console.log(numberOfPeopleValue);
   calculateTip(billAmountValue, tipPercentValue, numberOfPeopleValue);
 });
 
