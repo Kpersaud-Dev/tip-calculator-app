@@ -6,18 +6,11 @@ const billAmount = document.getElementById('bill-amount'),
       tipAmount = document.querySelector('.tip-display'),
       totalAmount = document.querySelector('.total-amount'),
       resetButton = document.querySelector('#reset'),
-      form = document.querySelector('.card'),
-      fiveButton = document.querySelector('#five'),
-      tenButton = document.querySelector('#ten'),
-      fifteenButton = document.querySelector('#fifteen'),
-      twentyButton = document.querySelector('#twenty'),
-      fiftyButton = document.querySelector('#fifty');
+      form = document.querySelector('.card');
 
 
 // Update Totals Display
 const updateTotals = (tip, total) => {
-
-  console.log(tip, total);
 
   // If values are Not a number, display 0
   if(isNaN(tip)) {
@@ -25,20 +18,22 @@ const updateTotals = (tip, total) => {
   } else if(isNaN(total)) {
     totalAmount.innerText = "$0.00";
   } else {
-    tipAmount.innerText = tip;
-    totalAmount.innerText = total;
+    tipAmount.innerText = `$${tip}`;
+    totalAmount.innerText = `$${total}`;
   }
-  
 };
 
 
 // Calculate Tip
 const calculateTip = (bill, tip, numPeople) => {
-  const tipTotal = Math.floor((bill * tip) / numPeople);
-  const totalPerPerson = Math.floor((bill + tipTotal) / numPeople);
+  const tipTotal = (bill * tip) / numPeople;
+  const totalPerPerson = (bill + tipTotal) / numPeople;
+
+  const tipRounded = tipTotal.toFixed(2);
+  const totalRounded = totalPerPerson.toFixed(2);
 
   // Update Display
-  updateTotals(tipTotal, totalPerPerson);
+  updateTotals(tipRounded, totalRounded);
 };
 
 
@@ -62,7 +57,7 @@ tipPercent.forEach(tip => tip.addEventListener('click', e => {
   // Add highlight on clicked button
   // e.target.classList.add('clicked');
 
-  let tipPercentValue = e.target.value,
+  let tipPercentValue = parseFloat(e.target.value),
       billAmountValue = parseFloat(billAmount.value),
     
       customTipValue = parseFloat(customTip.value),
@@ -72,17 +67,36 @@ tipPercent.forEach(tip => tip.addEventListener('click', e => {
   })
 );
 
+// Custom Tip Event Listener
+
+customTip.addEventListener('input', function(e) {
+  let billAmountValue = parseFloat(billAmount.value),
+    tipPercentValue = parseFloat(tipPercent.value),
+    customTipValue = parseFloat(e.target.value),
+    numberOfPeopleValue = parseFloat(numberOfPeople.value);
+
+  console.log(billAmountValue, customTipValue, numberOfPeopleValue);
+
+  calculateTip(billAmountValue, customTipValue, numberOfPeopleValue);
+})
+
 // Number of People Event Listener
 
 numberOfPeople.addEventListener('change', function(e) {
   let billAmountValue = parseFloat(billAmount.value),
-    
+    tipPercentValue = tipPercent.forEach(tip => tip.addEventListener('click', e => {
+      e.preventDefault();
+      return e.target.value;
+    })),
     customTipValue = parseFloat(customTip.value),
-    numberOfPeopleValue = e.target.value;
+    numberOfPeopleValue = parseFloat(e.target.value);
+
+    console.log(billAmountValue, tipPercentValue, numberOfPeopleValue)
 
   calculateTip(billAmountValue, tipPercentValue, numberOfPeopleValue);
 });
 
+// Reset Values Upon click
 resetButton.addEventListener('click', function() {
   tipAmount.innerText = 0;
   totalAmount.innerText = 0

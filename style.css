@@ -175,6 +175,27 @@ input {
 /* Tablet Styles */
 
 @media only screen and (min-width: 768px) {
+  .card {
+    width: 80%;
+  }
+
+  .totals {
+    width: 65%;
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 1024px) {
+  .totals {
+    width: 50%;
+    height: 50vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
   /* Tip Buttons Section */
 
   .buttons {
