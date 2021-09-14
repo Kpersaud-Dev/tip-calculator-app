@@ -26,11 +26,14 @@ const updateTotals = (tip, total) => {
 
 // Calculate Tip
 const calculateTip = (bill, tip, numPeople) => {
-  const tipTotal = (bill * tip) / numPeople;
+  const tipTotal = (bill * tip);
+  
   const totalPerPerson = (bill + tipTotal) / numPeople;
 
-  const tipRounded = tipTotal.toFixed(2);
+  const tipRounded = tipTotal.toFixed(2) / numPeople;
   const totalRounded = totalPerPerson.toFixed(2);
+
+  
 
   // Update Display
   updateTotals(tipRounded, totalRounded);
@@ -91,7 +94,6 @@ numberOfPeople.addEventListener('change', function(e) {
     customTipValue = parseFloat(customTip.value),
     numberOfPeopleValue = parseFloat(e.target.value);
 
-    console.log(billAmountValue, tipPercentValue, numberOfPeopleValue)
 
   calculateTip(billAmountValue, tipPercentValue, numberOfPeopleValue);
 });
