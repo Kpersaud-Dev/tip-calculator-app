@@ -33,8 +33,6 @@ const calculateTip = (bill, tip, numPeople) => {
   const tipRounded = tipTotal.toFixed(2) / numPeople;
   const totalRounded = totalPerPerson.toFixed(2);
 
-  
-
   // Update Display
   updateTotals(tipRounded, totalRounded);
 };

@@ -185,6 +185,11 @@ input {
 
 /* Desktop Styles */
 @media only screen and (min-width: 1024px) {
+  .card {
+    flex-flow: row wrap;
+    height: 60vh;
+  }
+
   .totals {
     width: 50%;
     height: 50vh;
@@ -204,7 +209,7 @@ input {
 
   /* Totals Section */
   .totals {
-    height: 90%;
+    height: 100%;
     width: 50%;
     display: flex;
     flex-flow: column wrap;
