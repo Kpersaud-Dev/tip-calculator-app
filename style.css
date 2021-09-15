@@ -187,7 +187,7 @@ input {
 @media only screen and (min-width: 1024px) {
   .card {
     flex-flow: row wrap;
-    height: 60vh;
+    height: 100%;
   }
 
   .totals {
@@ -200,6 +200,10 @@ input {
 }
 
 @media only screen and (min-width: 1440px) {
+  .card {
+    padding: 10em 10em;
+  }
+
   /* Tip Buttons Section */
 
   .buttons {
@@ -207,10 +211,14 @@ input {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .left-container {
+    height: 50vh;
+  }
+
   /* Totals Section */
   .totals {
-    height: 100%;
-    width: 50%;
+    height: 50vh;
+    width: 45%;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
