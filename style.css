@@ -43,9 +43,6 @@ label {
 
 /* Bill Amount Input Section */
 
-input {
-}
-
 .input {
   display: flex;
   flex-flow: column wrap;
@@ -175,6 +172,8 @@ input {
 
 @media only screen and (min-width: 768px) {
   .card {
+    display: flex;
+    flex-flow: row wrap;
     width: 80%;
   }
 
@@ -184,15 +183,20 @@ input {
 }
 
 /* Desktop Styles */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1023px) {
   .card {
+    display: flex;
     flex-flow: row wrap;
+    justify-content: space-around;
     height: 100%;
+  }
+
+  .left-container {
+    width: 50%;
   }
 
   .totals {
     width: 50%;
-    height: 50vh;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
